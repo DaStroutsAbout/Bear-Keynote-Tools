@@ -8,7 +8,6 @@ AppleScript automation suite for formatting Keynote-based foundation and drainag
 | File | Description |
 |------|-------------|
 | `Keynote Tools.applescript` | Main tool — contains Programs 1 through 4 |
-| `expand_slides.applescript` | Standalone utility — splits condensed slides back onto separate pages |
 | `Keynote_Tools_Guide.docx` | Full user guide and technical reference |
 
 ### Required supporting files (not in this repo)
@@ -30,7 +29,7 @@ The Arrows folder is not stored in this repo because it contains binary image fi
 
 ## Installation
 
-1. Clone or download this repository to your Mac — a good location is `~/Documents/Bear Programs/`
+1. Clone or download this repository to your Mac — a good location is `~/Desktop`
 2. Open `Keynote Tools.applescript` in **Script Editor** (search for it in Spotlight)
 3. Copy the `Arrows/` folder into each job folder alongside the Keynote report
 4. The first time you run Program 4 or `expand_slides`, macOS will prompt for **Accessibility permission** — go to System Settings → Privacy & Security → Accessibility and enable Script Editor
@@ -54,10 +53,6 @@ Single-slide photo straightening that snaps each photo to its nearest grid posit
 
 **Program 4 — Condense Slides**
 Scans a slide range top-to-bottom and merges any slide whose content fits onto the previous slide with a 10pt overlap gap. Useful after content editing has left slides partially filled. Uses clipboard keystrokes — Keynote must stay frontmost while running.
-
-### Expand Slides (`expand_slides.applescript`)
-
-Inverse of Program 4. Scans a slide range and detects slides that contain more than one content block (identified by multiple header/title text boxes). Splits each such slide into two, moving the lower content block to a new slide and resetting it to y=26. Run from Script Editor only.
 
 ---
 
@@ -132,7 +127,7 @@ Arrow type is selected by slide title:
 
 - **v1.4** — Initial release to BEAR team. Program 2 updated to include arrow placement, making it a full single-slide equivalent of Program 1. All page and slide number dialogs removed in favor of auto-detected values. Fixed off-canvas image exclusion across all three programs so images outside page boundaries are not counted toward text box positioning. Added page range auto-detection to Program 4.
 
-- **v1.5** — Resolved a bug related to wide photo and text box placement. Wide photos now correctly consume 2 grid slots, and all prior x-position and remainder slot logic has been replaced with a simplified rule: when a wide photo is present, the text box is always placed full-width (700pt) at x=34 in the next row down with 20pt additional spacing to account for the legend. Added `expand_slides.applescript` as a standalone development utility.
+- **v1.5** — Resolved a bug related to wide photo and text box placement. Wide photos now correctly consume 2 grid slots, and all prior x-position and remainder slot logic has been replaced with a simplified rule: when a wide photo is present, the text box is always placed full-width (700pt) at x=34 in the next row down with 20pt additional spacing to account for the legend.
 
 ---
 
