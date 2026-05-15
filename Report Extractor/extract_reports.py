@@ -22,6 +22,12 @@ from tkinter import filedialog, messagebox
 # ── Config ────────────────────────────────────────────────────────────────────
 
 REPORT_KEYWORD = "Foundation & Drainage Inspection Report"
+
+# Exact stems to exclude (filename without .key extension)
+EXCLUDED_STEMS = {
+    "Foundation & Drainage Inspection Report - NAME",
+    "Foundation & Drainage Inspection Report - trimed down - N8 test version copy 2",
+}
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 APPLESCRIPT_PATH = os.path.join(SCRIPT_DIR, "extract_report.applescript")
 
@@ -47,7 +53,9 @@ def find_keynote_files(root_folder):
         dirnames[:] = [d for d in dirnames if not d.startswith(".")]
         for filename in filenames:
             if filename.endswith(".key") and REPORT_KEYWORD in filename:
-                matches.append(os.path.join(dirpath, filename))
+                stem = filename[:-4]  # strip .key
+                if stem not in EXCLUDED_STEMS:
+                    matches.append(os.path.join(dirpath, filename))
     return sorted(matches)
 
 
